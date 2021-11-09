@@ -23,7 +23,7 @@ class Product {
   double calculatePrice(double quantity) {
     double bill;
 
-    bill = pricePer100g! * quantity;
+    bill = pricePer100g * quantity;
     return bill;
   }
 }
