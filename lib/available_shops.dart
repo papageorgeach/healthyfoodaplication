@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/shop.dart';
-import '/shop_widget.dart';
+import 'shop_shortcut.dart';
 
 class AvailableShops extends StatelessWidget {
   List<Shop> availableshops;
@@ -13,7 +13,7 @@ class AvailableShops extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       for (shop in availableshops)
         Container(
-          child: ShopWidget(shop),
+          child: ShopShortcut(shop),
         ),
     ]);
   }

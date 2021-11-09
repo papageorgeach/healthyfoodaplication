@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'shop_widget.dart';
+import 'shop_shortcut.dart';
 import '/product.dart';
 import 'home.dart';
 
