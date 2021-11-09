@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:foodapplication/shop_widget.dart';
+import 'package:foodapplication/shop/shop_widget.dart';
 
 import '/dish.dart';
-import '/product.dart';
+import '../product/product.dart';
 import 'shop.dart';
 
 class ShopShortcut extends StatelessWidget {

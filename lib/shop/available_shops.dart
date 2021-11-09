@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/shop.dart';
+import 'shop.dart';
 import 'shop_shortcut.dart';
 
 class AvailableShops extends StatelessWidget {

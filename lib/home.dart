@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '/product.dart';
-import 'shop_shortcut.dart';
-import '/shop.dart';
-import 'available_shops.dart';
+import 'product/product.dart';
+import 'shop/shop_shortcut.dart';
+import 'shop/shop.dart';
+import 'shop/available_shops.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);

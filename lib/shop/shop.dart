@@ -1,5 +1,5 @@
 import '/dish.dart';
-import '/product.dart';
+import '../product/product.dart';
 import 'shop_shortcut.dart';
 
 class Shop {

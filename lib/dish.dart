@@ -1,4 +1,4 @@
-import '/product.dart';
+import 'product/product.dart';
 
 class Dish {
   String? name;
