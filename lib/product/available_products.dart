@@ -9,11 +9,11 @@ class AvailableProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var shop;
+    var product;
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      for (shop in availableProducts)
+      for (product in availableProducts)
         Container(
-          child: ProductShortcut(shop),
+          child: ProductShortcut(product),
         ),
     ]);
   }

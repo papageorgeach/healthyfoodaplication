@@ -4,4 +4,7 @@ class Order {
   List<ProductInOrder> products;
 
   Order(this.products);
+  void addProduct(ProductInOrder prod) {
+    products.add(prod);
+  }
 }

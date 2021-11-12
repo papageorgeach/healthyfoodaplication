@@ -1,5 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:foodapplication/product/product_in_order.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:foodapplication/shop/shop_widget.dart';
+import '../basket.dart';
+import '../basket_widget.dart';
+import '../order_widget.dart';
 import 'product.dart';
 /*
 class ProductWidget extends StatelessWidget {
@@ -55,8 +61,24 @@ class _ProductWidgetState extends State<ProductWidget> {
     }
   }
 
+  void addToList() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => OrderWidget(_quantity)));
+  }
+
   @override
   Widget build(BuildContext context) {
+    var applicationState = Provider.of<CartModel>(context);
+
+    void addstate() {
+      ProductInOrder item = ProductInOrder(widget.product, _quantity, 25);
+      applicationState.removeAll();
+      applicationState.add(item);
+
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Basket()));
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.product.name),
@@ -83,6 +105,13 @@ class _ProductWidgetState extends State<ProductWidget> {
             IconButton(onPressed: _add, icon: Icon(Icons.add)),
           ],
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            FloatingActionButton(onPressed: addstate, child: Icon(Icons.add))
+          ],
+        )
       ]),
     );
   }

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'basket.dart';
 import 'shop/shop_shortcut.dart';
 import 'product/product.dart';
 import 'home.dart';
 
 void main() {
-  int x = 50;
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CartModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
