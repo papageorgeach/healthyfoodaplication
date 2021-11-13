@@ -3,8 +3,8 @@ import 'package:foodapplication/product/product_in_order.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapplication/shop/shop_widget.dart';
-import '../basket.dart';
-import '../basket_widget.dart';
+import '../basket/basket.dart';
+import '../basket/basket_widget.dart';
 import '../order_widget.dart';
 import 'product.dart';
 /*
@@ -72,7 +72,7 @@ class _ProductWidgetState extends State<ProductWidget> {
 
     void addstate() {
       ProductInOrder item = ProductInOrder(widget.product, _quantity, 25);
-      applicationState.removeAll();
+      //applicationState.removeAll();
       applicationState.add(item);
 
       Navigator.of(context)

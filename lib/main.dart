@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'basket.dart';
+import 'basket/basket.dart';
 import 'shop/shop_shortcut.dart';
 import 'product/product.dart';
 import 'home.dart';

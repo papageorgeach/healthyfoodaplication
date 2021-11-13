@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodapplication/shop/shop_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../basket.dart';
+import '../basket/basket.dart';
 import '/dish.dart';
 import '../product/product.dart';
 import 'shop.dart';
@@ -17,7 +17,7 @@ class ShopShortcut extends StatelessWidget {
     return GestureDetector(
         // When the child is tapped, show a snackbar.
         onTap: () {
-          applicationState.removeAll();
+          //applicationState.removeAll();
           applicationState.setShop(shop);
 
           ScaffoldMessenger.of(context)

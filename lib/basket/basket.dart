@@ -18,8 +18,8 @@ class CartModel extends ChangeNotifier {
     shop = s;
   }
 
-  ProductInOrder getFirst() {
-    return items[0];
+  List<ProductInOrder> getFirst() {
+    return items;
   }
 
   /// Removes all items from the cart.
