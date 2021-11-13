@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'basket/basket_widget.dart';
 import 'product/product.dart';
 import 'shop/shop_shortcut.dart';
 import 'shop/shop.dart';
@@ -39,6 +40,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.shopping_basket,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Basket()));
+            },
+          )
+        ],
       ),
       body: Center(
         child: Column(

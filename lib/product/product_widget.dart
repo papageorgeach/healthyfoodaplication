@@ -75,13 +75,29 @@ class _ProductWidgetState extends State<ProductWidget> {
       //applicationState.removeAll();
       applicationState.add(item);
 
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => Basket()));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('${item.product.name} added')));
+
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => ShopWidget(applicationState.shop)));
     }
 
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.product.name),
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.shopping_basket,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Basket()));
+            },
+          )
+        ],
       ),
       body: Column(children: [
         Row(

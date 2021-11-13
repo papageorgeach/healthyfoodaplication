@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodapplication/basket/basket_widget.dart';
 import 'package:foodapplication/product/product_in_order.dart';
 import 'available_shops.dart';
 import '../product/available_products.dart';
@@ -32,6 +33,19 @@ class _ShopWidgetState extends State<ShopWidget> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.shop.name),
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.shopping_basket,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Basket()));
+            },
+          )
+        ],
       ),
       body: Center(
         child: Column(
