@@ -4,7 +4,7 @@ import 'package:foodapplication/shop/shop.dart';
 
 class CartModel extends ChangeNotifier {
   /// Internal, private state of the cart.
-  CartModel() {}
+  CartModel();
   final List<ProductInOrder> items = [];
   late Shop shop;
 
@@ -20,6 +20,10 @@ class CartModel extends ChangeNotifier {
 
   List<ProductInOrder> getFirst() {
     return items;
+  }
+
+  int items_in_th_basket() {
+    return items.length;
   }
 
   /// Removes all items from the cart.

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:foodapplication/user/profile.dart';
 import 'basket/basket_widget.dart';
 import 'product/product.dart';
 import 'shop/shop_shortcut.dart';
 import 'shop/shop.dart';
 import 'shop/available_shops.dart';
+import 'user/user.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -36,20 +38,22 @@ class _MyHomePageState extends State<MyHomePage> {
     Shop shop3 = Shop("shop3", "address", "phone", products);
 
     List<Shop> shops = [shop1, shop2, shop3];
+    User user = User("Achilles");
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(widget.title),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
             icon: Icon(
-              Icons.shopping_basket,
+              Icons.face_sharp,
               color: Colors.white,
             ),
             onPressed: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Basket()));
+                  .push(MaterialPageRoute(builder: (context) => Profile(user)));
             },
           )
         ],

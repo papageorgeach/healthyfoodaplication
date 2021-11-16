@@ -20,12 +20,37 @@ class Basket extends StatelessWidget {
     var product;
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              clean();
+            },
+          ),
+          centerTitle: true,
           title: Text("BASKET"),
         ),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          for (product in applicationState.getFirst())
+        body: ListView(children: [
+          for (product in applicationState.getFirst()) ProductInBasket(product),
+          const Divider(
+            height: 20,
+            thickness: 3,
+            indent: 5,
+            endIndent: 5,
+            color: Colors.black38,
+          ),
+          if (applicationState.items_in_th_basket() > 0)
             Container(
-              child: ProductInBasket(product),
+              child: Text(
+                "ORDER",
+                style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+              ),
+              margin: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(15.0),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.green[300],
+                borderRadius: BorderRadius.circular(5),
+              ),
             ),
         ]));
   }

@@ -7,25 +7,6 @@ import '../basket/basket.dart';
 import '../basket/basket_widget.dart';
 import '../order_widget.dart';
 import 'product.dart';
-/*
-class ProductWidget extends StatelessWidget {
-  Product product;
-  ProductWidget(this.product, {Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(product.name),
-      ),
-      body: Center(
-        child: Text(
-          product.name,
-          style: TextStyle(fontStyle: FontStyle.italic, fontSize: 40),
-        ),
-      ),
-    );
-  }
-}*/
 
 class ProductWidget extends StatefulWidget {
   final Product product;
@@ -71,19 +52,29 @@ class _ProductWidgetState extends State<ProductWidget> {
     var applicationState = Provider.of<CartModel>(context);
 
     void addstate() {
-      ProductInOrder item = ProductInOrder(widget.product, _quantity, 25);
-      //applicationState.removeAll();
-      applicationState.add(item);
+      if (_quantity == 0) {
+        return;
+      } else {
+        ProductInOrder item = ProductInOrder(widget.product, _quantity, 25);
+        //applicationState.removeAll();
+        applicationState.add(item);
 
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('${item.product.name} added')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('${item.product.name} added')));
 
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => ShopWidget(applicationState.shop)));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ShopWidget(applicationState.shop)));
+      }
     }
 
     return Scaffold(
       appBar: AppBar(
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => Basket())),
+        ),
+        centerTitle: true,
         title: Text(widget.product.name),
         automaticallyImplyLeading: false,
         actions: <Widget>[
