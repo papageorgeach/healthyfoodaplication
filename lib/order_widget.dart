@@ -10,8 +10,8 @@ class OrderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) =>

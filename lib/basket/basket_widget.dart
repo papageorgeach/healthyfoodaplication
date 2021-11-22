@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:foodapplication/home.dart';
 import 'package:foodapplication/basket/product_in_basket.dart';
 import 'package:foodapplication/shop/shop_widget.dart';
+import 'package:foodapplication/order.dart';
 import 'package:provider/provider.dart';
+import '../order.dart';
 import 'basket.dart';
 
 class Basket extends StatelessWidget {
@@ -39,19 +41,45 @@ class Basket extends StatelessWidget {
             color: Colors.black38,
           ),
           if (applicationState.items_in_th_basket() > 0)
-            Container(
-              child: Text(
-                "ORDER",
-                style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
-              ),
-              margin: const EdgeInsets.all(20.0),
-              padding: const EdgeInsets.all(15.0),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.green[300],
-                borderRadius: BorderRadius.circular(5),
+            GestureDetector(
+              // When the child is tapped, show a snackbar.
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Order()));
+              },
+              child: Container(
+                child: Text(
+                  "ORDER",
+                  style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+                ),
+                margin: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(15.0),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.green[300],
+                  borderRadius: BorderRadius.circular(5),
+                ),
               ),
             ),
+          if (applicationState.items_in_th_basket() == 0)
+            GestureDetector(
+              // When the child is tapped, show a snackbar.
+              onTap: () {
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text(product.name)));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Order()));
+              },
+              child: Container(
+                child: Text(
+                  "EMPTY",
+                  style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+                ),
+                margin: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(15.0),
+                alignment: Alignment.center,
+              ),
+            )
         ]));
   }
 }

@@ -18,33 +18,37 @@ class Profile extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        title: const Text(
+          "Profile",
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          )
+        ],
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) =>
-                    const MyHomePage(title: "E-healthyfood")));
+                    const MyHomePage(title: "E-healthy food")));
           },
         ),
-        centerTitle: true,
-        title: const Text(
-          "Profile",
-        ),
-        automaticallyImplyLeading: false,
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                user.name,
-                style: TextStyle(fontStyle: FontStyle.italic, fontSize: 40),
-              )
-            ],
-          ),
-        ],
+      body: Container(
+        child: Text(
+          user.name,
+          style: TextStyle(fontStyle: FontStyle.italic, fontSize: 25),
+        ),
+        margin: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(15.0),
+        alignment: Alignment.center,
       ),
     );
   }
