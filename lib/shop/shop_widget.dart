@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodapplication/basket/basket.dart';
+import 'package:foodapplication/shop/shopinfo.dart';
 import 'package:provider/provider.dart';
 import 'package:foodapplication/basket/basket_widget.dart';
 import 'package:foodapplication/home.dart';
@@ -81,7 +82,17 @@ class _ShopWidgetState extends State<ShopWidget> {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const Basket()));
             },
-          )
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.info_rounded,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ShopInfo(applicationState.shop)));
+            },
+          ),
         ],
       ),
       body: Container(

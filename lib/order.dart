@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:animated_check/animated_check.dart';
 import 'package:foodapplication/home.dart';
+import 'package:foodapplication/product/products_in_order_widget.dart';
 import 'package:provider/provider.dart';
 import 'basket/basket.dart';
 
@@ -38,6 +39,17 @@ class _OrderState extends State<Order> with SingleTickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
+            margin: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(5.0),
+            alignment: Alignment.center,
+            child: Column(children: const [
+              Text(
+                "Order on the way !",
+                style: TextStyle(fontSize: 40),
+              )
+            ]),
+          ),
+          Container(
               child: AnimatedCheck(
             progress: _animation,
             size: 200,
@@ -47,17 +59,40 @@ class _OrderState extends State<Order> with SingleTickerProviderStateMixin {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => MyHomePage(title: "E-healthy food")));
-                applicationState.removeAll();
+                //applicationState.removeAll();
               },
               child: Container(
                 margin: const EdgeInsets.all(8.0),
                 padding: const EdgeInsets.all(5.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.red[50],
-                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.blue[50],
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                child: Column(children: [Text("go back")]),
+                child: Column(children: const [
+                  Text(
+                    "go back",
+                    style: TextStyle(fontSize: 25),
+                  )
+                ]),
+              )),
+          GestureDetector(
+              // When the child is tapped, show a snackbar.
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => OrdersProducts()));
+                //applicationState.removeAll();
+              },
+              child: Container(
+                margin: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(5.0),
+                alignment: Alignment.center,
+                child: Column(children: const [
+                  Text(
+                    "Order's details",
+                    style: TextStyle(fontSize: 18),
+                  )
+                ]),
               ))
         ],
       ),

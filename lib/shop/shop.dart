@@ -6,8 +6,9 @@ class Shop {
   String name;
   String address;
   String phone;
+  String description;
   List<Product> products;
   //List<Dish> dishes;
 
-  Shop(this.name, this.address, this.phone, this.products);
+  Shop(this.name, this.address, this.phone, this.description, this.products);
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'address/address.dart';
+import 'address/address_widget.dart';
 import 'basket/basket.dart';
 import 'shop/shop_shortcut.dart';
 import 'product/product.dart';
@@ -22,10 +24,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      darkTheme: ThemeData(
+        brightness: Brightness.light,
+        /* dark theme settings */
       ),
-      home: const MyHomePage(title: 'E-healthy food'),
+      home: const Address_widget(),
     );
   }
 }

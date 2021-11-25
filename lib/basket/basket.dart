@@ -7,6 +7,11 @@ class CartModel extends ChangeNotifier {
   CartModel();
   final List<ProductInOrder> items = [];
   late Shop shop;
+  late String address;
+
+  void setAdress(String s) {
+    address = s;
+  }
 
   void add(ProductInOrder item) {
     items.add(item);

@@ -20,11 +20,11 @@ class ProductShortcut extends StatelessWidget {
               MaterialPageRoute(builder: (context) => ProductWidget(product)));
         },
         child: Container(
-          margin: const EdgeInsets.all(8.0),
-          padding: const EdgeInsets.all(5.0),
+          margin: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(15.0),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Colors.red[50],
+            color: Colors.blueGrey,
             borderRadius: BorderRadius.circular(5),
           ),
           child: Column(children: [Text(product.name)]),

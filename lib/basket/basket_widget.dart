@@ -29,7 +29,7 @@ class Basket extends StatelessWidget {
             },
           ),
           centerTitle: true,
-          title: Text("BASKET"),
+          title: const Text("BASKET"),
         ),
         body: ListView(children: [
           for (product in applicationState.getFirst()) ProductInBasket(product),
@@ -48,7 +48,7 @@ class Basket extends StatelessWidget {
                     .push(MaterialPageRoute(builder: (context) => Order()));
               },
               child: Container(
-                child: Text(
+                child: const Text(
                   "ORDER",
                   style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
                 ),
@@ -71,7 +71,7 @@ class Basket extends StatelessWidget {
                     .push(MaterialPageRoute(builder: (context) => Order()));
               },
               child: Container(
-                child: Text(
+                child: const Text(
                   "EMPTY",
                   style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
                 ),
