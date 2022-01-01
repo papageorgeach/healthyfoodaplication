@@ -49,9 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var applicationstate = Provider.of<CartModel>(context);
-    Product chicken = Product("chicken", "description", 2, 150, 30, 2, 5);
-    Product egg = Product("egg", "description", 2, 150, 30, 2, 5);
-    Product potato = Product("potato", "description", 2, 150, 30, 2, 5);
+    Product chicken =
+        Product("chicken", "description", 2, true, false, 150, 30, 2, 5);
+    Product egg = Product("egg", "description", 2, false, true, 150, 30, 2, 5);
+    Product potato =
+        Product("potato", "description", 2, true, false, 150, 30, 2, 5);
     List<Product> products = [chicken, egg, potato];
 
     Shop shop1 = Shop("shop1", "address", "phone",

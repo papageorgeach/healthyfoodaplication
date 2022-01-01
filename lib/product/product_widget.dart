@@ -10,19 +10,27 @@ import 'product.dart';
 
 class ProductWidget extends StatefulWidget {
   final Product product;
+  late int _quantity;
 
-  const ProductWidget(this.product, {Key? key}) : super(key: key);
+  ProductWidget(this.product, {Key? key}) {
+    if (product.per100)
+      _quantity = 100;
+    else
+      _quantity = 1;
+  }
 
   @override
   _ProductWidgetState createState() => _ProductWidgetState();
 }
 
 class _ProductWidgetState extends State<ProductWidget> {
-  int _quantity = 0;
-
   void _add() {
     setState(() {
-      _quantity++;
+      if (widget.product.per100) {
+        widget._quantity = widget._quantity + 100;
+      } else {
+        widget._quantity = widget._quantity + 1;
+      }
     });
 
     @override
@@ -33,7 +41,11 @@ class _ProductWidgetState extends State<ProductWidget> {
 
   void _remove() {
     setState(() {
-      _quantity--;
+      if (widget.product.per100) {
+        if (widget._quantity > 100) widget._quantity = widget._quantity - 100;
+      } else {
+        if (widget._quantity > 1) widget._quantity = widget._quantity - 1;
+      }
     });
 
     @override
@@ -43,8 +55,8 @@ class _ProductWidgetState extends State<ProductWidget> {
   }
 
   void addToList() {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => OrderWidget(_quantity)));
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => OrderWidget(widget._quantity)));
   }
 
   @override
@@ -52,10 +64,11 @@ class _ProductWidgetState extends State<ProductWidget> {
     var applicationState = Provider.of<CartModel>(context);
 
     void addstate() {
-      if (_quantity == 0) {
+      if (widget._quantity == 0) {
         return;
       } else {
-        ProductInOrder item = ProductInOrder(widget.product, _quantity, 25);
+        ProductInOrder item =
+            ProductInOrder(widget.product, widget._quantity, 25);
         //applicationState.removeAll();
         applicationState.add(item);
 
@@ -90,36 +103,83 @@ class _ProductWidgetState extends State<ProductWidget> {
           )
         ],
       ),
-      body: Column(children: [
-        Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.product.name,
-                style: TextStyle(fontStyle: FontStyle.italic, fontSize: 40),
-              )
-            ]),
-        Row(
+      body: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IconButton(onPressed: _remove, icon: Icon(Icons.remove)),
-            Text(
-              '$_quantity',
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 40),
-            ),
-            IconButton(onPressed: _add, icon: Icon(Icons.add)),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            FloatingActionButton(onPressed: addstate, child: Icon(Icons.add))
-          ],
-        )
-      ]),
+            Column(children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.product.name,
+                      style:
+                          TextStyle(fontStyle: FontStyle.italic, fontSize: 40),
+                    ),
+                  ]),
+              Column(
+                children: [
+                  Row(children: [
+                    const Text("Calories:"),
+                    Text(widget.product.calories.toString()),
+                  ]),
+                  Row(children: [
+                    const Text("Protein:"),
+                    Text(widget.product.protein.toString()),
+                  ]),
+                  Row(children: [
+                    const Text("Carbs:"),
+                    Text(widget.product.carbs.toString()),
+                  ]),
+                  Row(children: [
+                    const Text("Fat:"),
+                    Text(widget.product.fat.toString()),
+                  ]),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(onPressed: _remove, icon: Icon(Icons.remove)),
+                  Text(
+                    widget._quantity.toString(),
+                    style: TextStyle(fontStyle: FontStyle.italic, fontSize: 40),
+                  ),
+                  Text(
+                    " g",
+                    style: TextStyle(fontStyle: FontStyle.italic, fontSize: 40),
+                  ),
+                  IconButton(onPressed: _add, icon: Icon(Icons.add)),
+                ],
+              ),
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FloatingActionButton(
+                        onPressed: addstate, child: Icon(Icons.add)),
+                  ]),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      widget.product
+                          .calculatePrice(widget._quantity)
+                          .toString(),
+                      style:
+                          TextStyle(fontStyle: FontStyle.italic, fontSize: 40),
+                    ),
+                    Text(
+                      "euro",
+                      style:
+                          TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+                    ),
+                  ])
+            ]),
+          ]),
     );
   }
 }

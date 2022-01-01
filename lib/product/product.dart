@@ -1,15 +1,17 @@
 class Product {
   String name;
   String description;
-  double pricePer100g;
-  //per 100g
+  double price;
+  bool per100;
+  bool perpiece;
+  //per 100g or per piece
   int calories;
   int protein;
   int carbs;
   int fat;
 
-  Product(this.name, this.description, this.pricePer100g, this.calories,
-      this.protein, this.carbs, this.fat);
+  Product(this.name, this.description, this.price, this.per100, this.perpiece,
+      this.calories, this.protein, this.carbs, this.fat);
 
   List macros(double quantity) {
     double mealCalories = calories * quantity;
@@ -20,10 +22,10 @@ class Product {
     return macros;
   }
 
-  double calculatePrice(double quantity) {
+  double calculatePrice(int quantity) {
     double bill;
 
-    bill = pricePer100g * quantity;
+    bill = price * quantity;
     return bill;
   }
 }

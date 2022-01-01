@@ -24,10 +24,20 @@ class ProductShortcut extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Colors.blueGrey,
+            color: Colors.blueGrey[200],
             borderRadius: BorderRadius.circular(5),
           ),
-          child: Column(children: [Text(product.name)]),
+          child: Column(children: [
+            Row(
+              children: [
+                Text(
+                  product.name,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+              ],
+            ),
+          ]),
         ));
   }
 }
